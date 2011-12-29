@@ -12,14 +12,18 @@ Getting Started
     Either add the line `gem "erb2haml", :group => :development` to your `Gemfile`, or    
         group :development do
           ...
-          gem "erb2haml"         # Add this line
+          gem "erb2haml-win"         # Add this line
           ...
         end
 
-2. Run `rake haml:toerb`
+2. Run `rake haml:toErb`
 3. Watch your ERB files getting converted to haml.
 
 And that's it!
+
+Optional:
+`rake haml:delErb` for deleting *.erb
+`rake haml:toDelErb` for converting & deleting *.erb
 
 Copyright
 ---------
