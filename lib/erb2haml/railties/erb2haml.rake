@@ -38,6 +38,6 @@ namespace :haml do
   end #End rake task
 
   desc "Convert and Delete erb files. Windows only"
-  task :to_delErb => [:toErb,:delErb]
+  task :toDelErb => [:toErb,:delErb]
 end # End of :haml namespace
 
