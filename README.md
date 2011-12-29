@@ -1,10 +1,16 @@
-erb2haml
+erb2haml-win
 ========
 **erb2haml-win** adds a simple rake task to your Rails app to converts all ERb HTML files in `APP_HOME/app/views/` to Haml.
 
 **Windows Only!**
 
 Forked from https://github.com/dhl/erb2haml
+
+Urgent Question
+---------------
+
+Why my rake tasks are unavailable?
+But after installing the original erb2haml they appears?
 
 Getting Started
 ---------------
