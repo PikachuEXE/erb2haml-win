@@ -1,8 +1,10 @@
 erb2haml
 ========
-**erb2haml** adds a simple rake task to your Rails app to converts all ERb HTML files in `APP_HOME/app/views/` to Haml.
+**erb2haml-win** adds a simple rake task to your Rails app to converts all ERb HTML files in `APP_HOME/app/views/` to Haml.
 
-Existing Haml files are untouched.
+**Windows Only!**
+
+Forked from https://github.com/dhl/erb2haml
 
 Getting Started
 ---------------
@@ -21,8 +23,10 @@ Getting Started
 
 And that's it!
 
-Optional:
+Other commands:
+
 `rake haml:delErb` for deleting *.erb
+
 `rake haml:toDelErb` for converting & deleting *.erb
 
 Copyright
