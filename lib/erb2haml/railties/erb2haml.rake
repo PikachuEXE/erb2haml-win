@@ -23,7 +23,7 @@ namespace :haml do
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
                  "#{color('Haml', RED_FG)}..."
 
-    Dir["app/views/test/**/*.erb"].each do |file|
+    Dir["app/views/**/*.erb"].each do |file|
       puts "#{color('Converting',RED_FG)}: #{file}..."
       `html2haml -e #{file} #{file.gsub(/\.erb$/, '.haml')}`
       puts "#{color('Converted',GREEN_FG)}: #{file}..."
@@ -33,7 +33,7 @@ namespace :haml do
   desc "Delete erb files. Windows only"
   task :delErb do
     puts color('Start deleting all erb files...', RED_FG)
-    puts `del .\\app\\views\\test\\*.erb /s`
+    puts `del .\\app\\views\\*.erb /s`
     puts color('All erb files deleted!!', GREEN_FG)
   end #End rake task
 
