@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.date                = Time.now.strftime('%Y-%m-%d')
   s.summary             = "Perform bulk conversion of all html.erb files to Haml in views folder. Windows only. Also delete erb files"
   s.description         = "Simple rake task to bulk covert ERB HAML files in a Rails app to Haml."
-  s.homepage            = "http://github.com/PikachuEXE/erb2haml"
+  s.homepage            = "http://github.com/PikachuEXE/erb2haml-win"
   s.email               = "pikachuexe@gmail.com"
   s.authors             = ['David Leung','PikachuEXE']
   s.platform            = Gem::Platform::RUBY
