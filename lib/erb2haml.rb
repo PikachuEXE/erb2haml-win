@@ -1,2 +1,2 @@
-require 'erb2haml/railtie' if defined?(Rails)
+require 'erb2haml-win/railtie' if defined?(Rails)
 
