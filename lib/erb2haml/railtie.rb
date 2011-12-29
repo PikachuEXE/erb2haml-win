@@ -1,4 +1,4 @@
-require 'erb2haml-win'
+require 'erb2haml'
 require 'rails'
 
 module ERb2Haml
