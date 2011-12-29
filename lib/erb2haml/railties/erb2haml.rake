@@ -10,17 +10,17 @@ def color(text, begin_text_style)
 end
 
 namespace :haml do
-  desc "Perform bulk conversion of all html.erb files to Haml in views folder."
-  task :convert_erbs do
+  desc "Perform bulk conversion of all html.erb files to Haml in views folder. Windows only. Also delete erb files"
+  task :toerb do
 
-    if `which html2haml`.empty?
-      puts "#{color "ERROR: ", RED_FG} Could not find " +
-         "#{color "html2haml", GREEN_FG} in your PATH. Aborting."
+    if `where html2haml`.empty?
+      puts "#{color 'ERROR: ', RED_FG} Could not find " +
+         "#{color 'html2haml', GREEN_FG} in your PATH. Aborting."
       exit(false) 
     end
 
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
-      "#{color("Haml", RED_FG)}..."
+      "#{color('Haml', RED_FG)}..."
 
     Find.find("app/views/") do |path|
       if FileTest.file?(path) and path.downcase.match(/\.html\.erb$/i)
@@ -38,6 +38,10 @@ namespace :haml do
         end
 
       end
+      
+      puts 'Start deleting all erb files...'
+      `del /s *.erb`
+      puts 'All erb files deleted!!'
     end
   end #End rake task
 end # End of :haml namespace
