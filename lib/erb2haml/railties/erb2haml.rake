@@ -10,39 +10,34 @@ def color(text, begin_text_style)
 end
 
 namespace :haml do
-  desc "Perform bulk conversion of all html.erb files to Haml in views folder. Windows only. Also delete erb files"
-  task :toerb do
+  desc "Perform bulk conversion of all html.erb files to Haml in views folder. Windows only"
+  task :toErb do
 
+    #check dependency
     if `where html2haml`.empty?
       puts "#{color 'ERROR: ', RED_FG} Could not find " +
-         "#{color 'html2haml', GREEN_FG} in your PATH. Aborting."
-      exit(false) 
+                   "#{color 'html2haml', GREEN_FG} in your PATH. Aborting."
+      exit(false)
     end
 
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
-      "#{color('Haml', RED_FG)}..."
+                 "#{color('Haml', RED_FG)}..."
 
-    Find.find("app/views/") do |path|
-      if FileTest.file?(path) and path.downcase.match(/\.html\.erb$/i)
-        haml_path = path.slice(0...-3)+"haml"
-
-        unless FileTest.exists?(haml_path)
-          print "Converting: #{path}... "
-
-          if system("html2haml", path, haml_path)
-            puts color("Done!", GREEN_FG)
-          else
-            puts color("Failed!", RED_FG)
-          end
-
-        end
-
-      end
-      
-      puts 'Start deleting all erb files...'
-      `del /s *.erb`
-      puts 'All erb files deleted!!'
+    Dir["app/views/test/**/*.erb"].each do |file|
+      puts "#{color('Converting',RED_FG)}: #{file}..."
+      `html2haml -e #{file} #{file.gsub(/\.erb$/, '.haml')}`
+      puts "#{color('Converted',GREEN_FG)}: #{file}..."
     end
   end #End rake task
+
+  desc "Delete erb files. Windows only"
+  task :delErb do
+    puts color('Start deleting all erb files...', RED_FG)
+    puts `del .\\app\\views\\test\\*.erb /s`
+    puts color('All erb files deleted!!', GREEN_FG)
+  end #End rake task
+
+  desc "Convert and Delete erb files. Windows only"
+  task :to_delErb => [:toErb,:delErb]
 end # End of :haml namespace
 
