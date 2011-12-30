@@ -23,21 +23,55 @@ namespace :haml do
     puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
                  "#{color('Haml', RED_FG)}..."
 
-    Dir["app/views/**/*.erb"].each do |file|
+    Dir["app/views/**/*.html.erb"].each do |file|
       puts "#{color('Converting',RED_FG)}: #{file}..."
       `html2haml -e #{file} #{file.gsub(/\.erb$/, '.haml')}`
       puts "#{color('Converted',GREEN_FG)}: #{file}..."
     end
   end #End rake task
 
-  desc "Delete erb files. Windows only"
+  desc "Delete html.erb files. Windows only"
   task :delErb do
     puts color('Start deleting all erb files...', RED_FG)
-    puts `del .\\app\\views\\*.erb /s`
+    puts `del .\\app\\views\\*.html.erb /s`
     puts color('All erb files deleted!!', GREEN_FG)
   end #End rake task
 
-  desc "Convert and Delete erb files. Windows only"
+  desc "Convert and Delete html.erb files. Windows only"
   task :toDelErb => [:toErb,:delErb]
+  
+  desc "Perform bulk conversion of all js.erb files to Haml in views folder EXCEPT js.erb. Windows only"
+  task :toJsErb do
+
+    #check dependency
+    if `where html2haml`.empty?
+      puts "#{color 'ERROR: ', RED_FG} Could not find " +
+                   "#{color 'html2haml', GREEN_FG} in your PATH. Aborting."
+      exit(false)
+    end
+
+    puts "Looking for #{color "ERB", GREEN_FG} files to convert to " +
+                 "#{color('Haml', RED_FG)}..."
+
+    Dir["app/views/**/*.js.erb"].each do |file|
+      puts "#{color('Converting',RED_FG)}: #{file}..."
+      `html2haml -e #{file} #{file.gsub(/\.erb$/, '.haml')}`
+      puts "#{color('Converted',GREEN_FG)}: #{file}..."
+    end
+  end #End rake task
+  
+  desc "Delete js.erb files. Windows only"
+  task :delJsErb do
+    puts color('Start deleting all erb files...', RED_FG)
+    puts `del .\\app\\views\\*.js.erb /s`
+    puts color('All erb files deleted!!', GREEN_FG)
+  end #End rake task
+  
+  desc "Convert and Delete js.erb files. Windows only"
+  task :toDelJsErb => [:toJsErb,:delJsErb]
+  
+  desc "Convert and Delete *.erb files. Windows only"
+  task :toDelAllErb => [:toDelErb,:toDelJsErb]
+  
 end # End of :haml namespace
 

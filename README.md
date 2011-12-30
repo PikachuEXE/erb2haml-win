@@ -6,8 +6,16 @@ erb2haml-win
 
 Forked from https://github.com/dhl/erb2haml
 
+Gem site: https://rubygems.org/gems/erb2haml-win
+
 Change Log
 ---------------
+
+0.1.4
+
+- Add: More Tasks (toJsErb, delJsErb, toDelJsErb, toDelAllErb) (See command list for usage) (and I still use to* for task name :P )
+- Change: toErb, delErb, toDelErb now handles *.html.erb only, since some people might want to keep *.js.erb (like me)
+- Fix: Readme Instructions
 
 0.1.3
 
@@ -18,9 +26,9 @@ Change Log
 Getting Started
 ---------------
 
-1. Add `gem "erb2haml"` to the development group in your Gemfile.
+1. Add `gem "erb2haml-win"` to the development group in your Gemfile.
 
-Either add the line `gem "erb2haml", :group => :development` to your `Gemfile`, or
+Either add the line `gem "erb2haml-win", :group => :development` to your `Gemfile`, or
 
 ```ruby
 group :development do
@@ -31,22 +39,24 @@ end
 ```
 
 2. Run `rake haml:toErb`
-3. Watch your ERB files getting converted to haml.
+3. Watch your .HTML.ERB files getting converted to haml.
 
 And that's it!
 
-Other commands:
+Full command list:
 
-- `rake haml:delErb` for deleting *.erb
-- `rake haml:toDelErb` for converting & deleting *.erb
+- `rake haml:toErb` for converting *.html.erb
+- `rake haml:delErb` for deleting *.html.erb
+- `rake haml:toDelErb` for converting & deleting *.html.erb
+- `rake haml:toJsErb` for converting *.js.erb
+- `rake haml:delJsErb` for deleting *.js.erb
+- `rake haml:toDelJsErb` for converting & deleting *.js.erb
+- `rake haml:toDelAllErb` for converting & deleting *.erb **Use with caution/backup**
 
 Comming (or not)
 ---------------
 
-0.1.4
-
-- Change Task names (or not if I found that funny)
-- Add Tasks for conversion and deletion while excluding *.js.erb (Since not quite useful)
+I am so busy doing my FYP...
 
 Copyright
 ---------
