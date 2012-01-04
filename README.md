@@ -58,6 +58,8 @@ Comming (or not)
 
 I am so busy doing my FYP...
 
+But I might make it general gem (works on both windows & *nix) when I am free/bored
+
 Copyright
 ---------
 Copyright (c) 2011 David Leung. See LICENSE for further details.
